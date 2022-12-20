@@ -3,6 +3,6 @@ module.exports = (app) => {
   app.get('/products', productsController.findAllProduct)
   app.get('/products/:id', productsController.findProduct)
   app.post('/products/new', productsController.newProduct)
-  app.delete('/products/delete', productsController.deleteProduct)
+  app.delete('/products/:id/delete', productsController.deleteProduct)
   app.put('/products/:id/edit', productsController.updateProduct)
 }

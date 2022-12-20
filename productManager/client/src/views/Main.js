@@ -13,14 +13,20 @@ const Main = () => {
       .then((res) => {
         setProducts(res.data.products)
         setLoaded(true)
-        console.log(res)
+        console.log(res.data.products)
       })
       .catch((err) => console.log(err))
   }, [products])
+
+  const removeFromDom = (productId) => {
+    setProducts(products.filter((product) => product._id != productId))
+  }
   return (
     <div>
       <ProductForm />
-      {loaded && <AllProducts allProducts={products} />}
+      {loaded && (
+        <AllProducts allProducts={products} removeFromDom={removeFromDom} />
+      )}
     </div>
   )
 }
